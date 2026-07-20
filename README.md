@@ -38,4 +38,5 @@ Add to each VR game in Steam → Properties → Launch Options.
 - [WiVRn GitHub](https://github.com/WiVRn/WiVRn)
 - [VR on Linux DB](https://db.vronlinux.org/)
 - [ProtonDB](https://www.protondb.com/)
-- [WayVR](https://github.com/wayvr-org/wayvr)
+- [WayVR](https://github.com/wayvr-org/wayvr)### Global OpenXR env var
+Added `export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1` to `~/.bashrc`. Launch Steam from terminal so all Proton games use WiVRn/OpenXR instead of SteamVR.
