@@ -51,3 +51,5 @@ Alternatively, `~/.local/share/applications/steam.desktop` has `Exec=` prefixed 
 Set `capture_method: "Screen"` in `~/.config/wayvr/conf.d/zz-saved-config.json5` (was `"Auto"`). Auto mode on KDE picks the active window instead of full desktop. KDE screen selection dialog may be invisible in VR — accept it on the physical monitor.
 ### Audio mirroring
 PipeWire `module-combine-stream` creates virtual sink `vr_mirror` that forwards to both `wivrn.sink` and analog stereo speakers. Config at `~/.config/pipewire/pipewire.conf.d/10-vr-mirror.conf`. Handles headset connect/disconnect automatically via `combine.on-demand-streams = true`.
+### VR spectator view
+WiVRn has no built-in spectator view (issue #404). Enable `debug-gui: true` in server.json for Monado debug window showing one-eye readback. May require rebuilding with `-DWIVRN_FEATURE_DEBUG_GUI=ON` if AUR package doesn't include it.
