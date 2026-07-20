@@ -47,3 +47,5 @@ Added to shell configs so all Proton games use WiVRn/OpenXR:
 
 Launch Steam from terminal so it inherits the env var.
 Alternatively, `~/.local/share/applications/steam.desktop` has `Exec=` prefixed with `env PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1` so KDE desktop shortcut also works.
+### WayVR capture fix
+Set `capture_method: "Screen"` in `~/.config/wayvr/conf.d/zz-saved-config.json5` (was `"Auto"`). Auto mode on KDE picks the active window instead of full desktop. KDE screen selection dialog may be invisible in VR — accept it on the physical monitor.
