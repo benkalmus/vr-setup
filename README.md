@@ -46,3 +46,4 @@ Added to shell configs so all Proton games use WiVRn/OpenXR:
 - `~/.zshrc`: `export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1`
 
 Launch Steam from terminal so it inherits the env var.
+Alternatively, `~/.local/share/applications/steam.desktop` has `Exec=` prefixed with `env PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1` so KDE desktop shortcut also works.
