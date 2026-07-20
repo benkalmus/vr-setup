@@ -1,0 +1,12 @@
+{
+    "file_format_version": "1.0.0",
+    "encoder": "vaapi",
+    "codec": "auto",
+    "bitrate": 100000000,
+    "foveated-encoding": false,
+    "hand-tracking": false,
+    "hid-forwarding": false,
+    "openvr-compat-path": "xrizer",
+    "use-steamvr-lh": false,
+    "debug-gui": false
+}
