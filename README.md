@@ -1,0 +1,1 @@
+# VR Setup\n\n## ALVR\n- v21.0.0-dev13 (nightly) installed alongside SteamVR previous branch\n- Quest 3 client APK sideloaded\n- UFW ports 9943-9944 already open\n\n## WiVRn\n- Alternative Linux-native OpenXR streaming (no SteamVR needed)\n- xrizer for OpenVR→OpenXR translation\n- WayVR for overlay/dashboard\n
