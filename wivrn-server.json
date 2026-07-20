@@ -10,5 +10,6 @@
     "hid-forwarding": false,
     "openvr-compat-path": "xrizer",
     "use-steamvr-lh": false,
+    "application": ["wayvr"],
     "debug-gui": false
 }
