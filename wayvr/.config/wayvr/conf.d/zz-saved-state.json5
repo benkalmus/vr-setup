@@ -1,0 +1,118 @@
+{
+  "sets": [
+    {
+      "name": "",
+      "overlays": {
+        "kbd": {
+          "alpha": 1.0,
+          "grabbable": true,
+          "interactable": true,
+          "positioning": "Anchored",
+          "curvature": 0.15,
+          "additive": false,
+          "saved_transform": null,
+          "block_input": true,
+          "angle_fade": false
+        },
+        "DP-3": {
+          "alpha": 1.0,
+          "grabbable": true,
+          "interactable": true,
+          "positioning": "Anchored",
+          "curvature": 0.15,
+          "additive": false,
+          "saved_transform": null,
+          "block_input": true,
+          "angle_fade": false
+        }
+      },
+      "hidden_overlays": {
+        "whisper": {
+          "alpha": 1.0,
+          "grabbable": true,
+          "interactable": true,
+          "positioning": "Anchored",
+          "curvature": null,
+          "additive": false,
+          "saved_transform": null,
+          "block_input": true,
+          "angle_fade": false
+        }
+      }
+    }
+  ],
+  "global_set": {
+    "Dashboard": {
+      "alpha": 1.0,
+      "grabbable": true,
+      "interactable": true,
+      "positioning": "Floating",
+      "curvature": 0.15,
+      "additive": false,
+      "saved_transform": [
+        0.9999949,
+        0.000092722476,
+        -0.00039467216,
+        -0.00010870397,
+        0.9991645,
+        -0.04074776,
+        0.00039055943,
+        0.04074779,
+        0.99916446,
+        -0.0005165413,
+        -0.045996904,
+        -1.1248944
+      ],
+      "block_input": true,
+      "angle_fade": false
+    },
+    "watch": {
+      "alpha": 1.0,
+      "grabbable": false,
+      "interactable": true,
+      "positioning": {
+        "FollowHand": {
+          "hand": "Left",
+          "lerp": 1.0,
+          "align_to_hmd": false
+        }
+      },
+      "curvature": null,
+      "additive": false,
+      "saved_transform": null,
+      "block_input": true,
+      "angle_fade": true
+    }
+  },
+  "last_set": 0,
+  "attribs": [
+    [
+      "DP-3",
+      []
+    ],
+    [
+      "kbd",
+      []
+    ],
+    [
+      "anchor",
+      []
+    ],
+    [
+      "watch",
+      []
+    ],
+    [
+      "Dashboard",
+      []
+    ],
+    [
+      "grab-help",
+      []
+    ],
+    [
+      "whisper",
+      []
+    ]
+  ]
+}
