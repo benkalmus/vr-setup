@@ -3,17 +3,6 @@
     {
       "name": "",
       "overlays": {
-        "kbd": {
-          "alpha": 1.0,
-          "grabbable": true,
-          "interactable": true,
-          "positioning": "Anchored",
-          "curvature": 0.15,
-          "additive": false,
-          "saved_transform": null,
-          "block_input": true,
-          "angle_fade": false
-        },
         "DP-3": {
           "alpha": 1.0,
           "grabbable": true,
@@ -27,6 +16,28 @@
         }
       },
       "hidden_overlays": {
+        "kbd": {
+          "alpha": 1.0,
+          "grabbable": true,
+          "interactable": true,
+          "positioning": "Anchored",
+          "curvature": 0.15,
+          "additive": false,
+          "saved_transform": null,
+          "block_input": true,
+          "angle_fade": false
+        },
+        "DP-2": {
+          "alpha": 1.0,
+          "grabbable": true,
+          "interactable": true,
+          "positioning": "Anchored",
+          "curvature": 0.15,
+          "additive": false,
+          "saved_transform": null,
+          "block_input": true,
+          "angle_fade": false
+        },
         "whisper": {
           "alpha": 1.0,
           "grabbable": true,
@@ -66,6 +77,21 @@
       "block_input": true,
       "angle_fade": false
     },
+    "toast": {
+      "alpha": 1.0,
+      "grabbable": false,
+      "interactable": false,
+      "positioning": {
+        "FollowHead": {
+          "lerp": 0.1
+        }
+      },
+      "curvature": null,
+      "additive": false,
+      "saved_transform": null,
+      "block_input": true,
+      "angle_fade": false
+    },
     "watch": {
       "alpha": 1.0,
       "grabbable": false,
@@ -91,6 +117,10 @@
       []
     ],
     [
+      "DP-2",
+      []
+    ],
+    [
       "kbd",
       []
     ],
@@ -112,6 +142,10 @@
     ],
     [
       "whisper",
+      []
+    ],
+    [
+      "toast",
       []
     ]
   ]
