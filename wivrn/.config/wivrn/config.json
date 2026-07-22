@@ -6,7 +6,7 @@
     "bitrate": 200000000,
     "foveated-encoding": true,
     "scale": 1.0,
-    "hand-tracking": false,
+    "hand-tracking": true,
     "hid-forwarding": false,
     "openvr-compat-path": "xrizer",
     "use-steamvr-lh": false,
