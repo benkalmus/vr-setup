@@ -18,7 +18,12 @@
 - v26.6.2 (AUR: wivrn-server, wivrn-dashboard)
 - xrizer-git for OpenVR→OpenXR translation
 - WayVR 26.7.1-2 for desktop overlay
-- Config: `~/.config/wivrn/server.json`
+- [docs](https://github.com/WiVRn/WiVRn/blob/master/docs/configuration.md)
+- Config read from: 
+    - `$XDG_CONFIG_HOME/wivrn/config.json`
+    - `/usr/share/wivrn/config.json`
+    - https://github.com/WiVRn/WiVRn/blob/master/docs/configuration.md
+
 - No SteamVR needed. Uses OpenXR directly.
 - Encoder: vaapi (AMD), codec: auto (negotiates AV1 if available)
 - Quest 3 client: install from Meta Store or APK
