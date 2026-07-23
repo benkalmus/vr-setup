@@ -1,5 +1,5 @@
 {
-  "server_version": "21.0.0-dev13+nightly.2026.06.06",
+  "server_version": "20.14.1",
   "openvr_config": {
     "eye_resolution_width": 2144,
     "eye_resolution_height": 2240,
@@ -9,10 +9,11 @@
     "enable_vive_tracker_proxy": false,
     "minimum_idr_interval_ms": 100,
     "adapter_index": 0,
-    "codec": 1,
+    "codec": 0,
     "h264_profile": 0,
     "refresh_rate": 90,
-    "use_10bit_encoder": true,
+    "use_10bit_encoder": false,
+    "use_full_range_encoding": true,
     "encoding_gamma": 1.0,
     "enable_hdr": false,
     "force_hdr_srgb_correction": false,
@@ -26,7 +27,7 @@
     "encoder_quality_preset": 1,
     "rate_control_mode": 0,
     "filler_data": true,
-    "entropy_coding": 1,
+    "entropy_coding": 0,
     "force_sw_encoding": false,
     "sw_thread_count": 0,
     "controller_is_tracker": false,
@@ -46,8 +47,8 @@
     "saturation": 0.0,
     "gamma": 0.0,
     "sharpening": 0.0,
-    "linux_async_compute": true,
-    "linux_async_reprojection": true,
+    "linux_async_compute": false,
+    "linux_async_reprojection": false,
     "nvenc_quality_preset": 1,
     "nvenc_tuning_preset": 2,
     "nvenc_multi_pass": 1,
@@ -82,9 +83,9 @@
     "_decoder_debug": false
   },
   "client_connections": {
-    "5133.client.local.": {
+    "9350.client": {
       "display_name": "Quest 3",
-      "current_ip": null,
+      "current_ip": "192.168.100.14",
       "manual_ips": [],
       "trusted": true,
       "connection_state": "Disconnected"
@@ -128,7 +129,7 @@
         "mode": {
           "ConstantMbps": 200,
           "Adaptive": {
-            "gui_collapsed": true,
+            "gui_collapsed": false,
             "saturation_multiplier": 0.95,
             "max_throughput_mbps": {
               "enabled": true,
@@ -153,7 +154,7 @@
               "content": {
                 "gui_collapsed": false,
                 "max_decoder_latency_ms": 30,
-                "latency_overstep_frames": 90,
+                "latency_overstep_frames": 20,
                 "latency_overstep_multiplier": 0.99
               }
             }
@@ -214,20 +215,16 @@
           "variant": "Cabac"
         },
         "filler_data": true,
-        "use_10bit": {
-          "set": true,
-          "content": true
-        },
-        "encoding_gamma": {
-          "set": false,
-          "content": 1.0
-        },
+        "use_10bit": false,
+        "server_overrides_use_10bit": false,
+        "use_full_range": true,
+        "server_overrides_use_full_range": false,
+        "encoding_gamma": 1.0,
+        "server_overrides_encoding_gamma": false,
         "hdr": {
           "gui_collapsed": true,
-          "enable": {
-            "set": false,
-            "content": false
-          },
+          "enable_hdr": false,
+          "server_overrides_enable_hdr": false,
           "force_hdr_srgb_correction": false,
           "clamp_hdr_extended_range": false
         },
@@ -323,7 +320,7 @@
             "content": 1072
           }
         },
-        "variant": "Scale"
+        "variant": "Absolute"
       },
       "emulated_headset_view_resolution": {
         "Scale": 1.0,
@@ -334,7 +331,7 @@
             "content": 1072
           }
         },
-        "variant": "Scale"
+        "variant": "Absolute"
       },
       "preferred_fps": 90.0,
       "adapter_index": 0,
@@ -427,27 +424,14 @@
       }
     },
     "headset": {
-      "recentering_mode": {
+      "position_recentering_mode": {
         "Local": {
-          "view_height": 1.5
-        },
-        "Tilted": {
           "view_height": 1.5
         },
         "variant": "LocalFloor"
       },
-      "marker_colocation": {
-        "enabled": false,
-        "content": {
-          "qr_code_string": "",
-          "floor_offset": {
-            "gui_collapsed": false,
-            "content": [
-              0.0,
-              0.0
-            ]
-          }
-        }
+      "rotation_recentering_mode": {
+        "variant": "Yaw"
       },
       "controllers": {
         "enabled": true,
@@ -461,6 +445,7 @@
               "predict": false
             }
           },
+          "multimodal_tracking": false,
           "hand_tracking_interaction": {
             "enabled": false,
             "content": {
@@ -497,7 +482,7 @@
                 "content": []
               }
             },
-            "variant": "Quest2Touch"
+            "variant": "Quest3Plus"
           },
           "extra_openvr_props": {
             "gui_collapsed": true,
@@ -596,21 +581,7 @@
         "Custom": {
           "serial_number": "Unknown"
         },
-        "variant": "Quest2"
-      },
-      "performance_level": {
-        "cpu": {
-          "enabled": false,
-          "content": {
-            "variant": "PowerSavings"
-          }
-        },
-        "gpu": {
-          "enabled": false,
-          "content": {
-            "variant": "PowerSavings"
-          }
-        }
+        "variant": "QuestPro"
       },
       "extra_openvr_props": {
         "gui_collapsed": true,
@@ -629,7 +600,11 @@
         "content": {
           "gui_collapsed": true,
           "sources": {
-            "variant": "PreferFullFaceTracking"
+            "eye_tracking_fb": true,
+            "face_tracking_fb": true,
+            "eye_expressions_htc": true,
+            "lip_expressions_htc": true,
+            "face_tracking_pico": true
           },
           "sink": {
             "VrchatEyeOsc": {
@@ -639,28 +614,26 @@
           }
         }
       },
-      "multimodal_tracking": {
-        "enabled": false,
-        "content": {
-          "enabled": true,
-          "detached_controllers_steamvr_sink": false
-        }
-      },
       "body_tracking": {
         "enabled": false,
         "content": {
           "gui_collapsed": true,
           "sources": {
-            "meta": {
-              "prefer_full_body": true,
-              "prefer_high_fidelity": true
+            "body_tracking_fb": {
+              "enabled": true,
+              "content": {
+                "full_body": true
+              }
             },
-            "bd": {
-              "BodyTracking": {
-                "high_accuracy": true,
-                "prompt_calibration_on_start": true
-              },
-              "variant": "BodyTracking"
+            "body_tracking_bd": {
+              "enabled": true,
+              "content": {
+                "BodyTracking": {
+                  "high_accuracy": true,
+                  "prompt_calibration_on_start": true
+                },
+                "variant": "BodyTracking"
+              }
             }
           },
           "sink": {
@@ -698,12 +671,7 @@
         "Custom": "alvr.client",
         "variant": "Github"
       },
-      "wired_client_autolaunch": {
-        "enabled": true,
-        "content": {
-          "boot_delay": 0
-        }
-      },
+      "wired_client_autolaunch": true,
       "enable_on_connect_script": false,
       "enable_on_disconnect_script": false,
       "allow_untrusted_http": false,
@@ -712,25 +680,21 @@
       "stream_port": 9944,
       "web_server_port": 8082,
       "osc_local_port": 9942,
-      "server_buffer_config": {
-        "send_size_bytes": {
-          "Custom": 100000,
-          "variant": "Maximum"
-        },
-        "recv_size_bytes": {
-          "Custom": 100000,
-          "variant": "Maximum"
-        }
+      "server_send_buffer_bytes": {
+        "Custom": 100000,
+        "variant": "Maximum"
       },
-      "client_buffer_config": {
-        "send_size_bytes": {
-          "Custom": 100000,
-          "variant": "Maximum"
-        },
-        "recv_size_bytes": {
-          "Custom": 100000,
-          "variant": "Maximum"
-        }
+      "server_recv_buffer_bytes": {
+        "Custom": 100000,
+        "variant": "Maximum"
+      },
+      "client_send_buffer_bytes": {
+        "Custom": 100000,
+        "variant": "Maximum"
+      },
+      "client_recv_buffer_bytes": {
+        "Custom": 100000,
+        "variant": "Maximum"
       },
       "max_queued_server_video_frames": 1024,
       "statistics_history_size": 256,
@@ -751,8 +715,7 @@
     },
     "extra": {
       "steamvr_launcher": {
-        "open_close_steamvr_with_dashboard": false,
-        "direct_launch": false
+        "open_close_steamvr_with_dashboard": true
       },
       "capture": {
         "startup_video_recording": false,
@@ -800,11 +763,11 @@
         }
       },
       "patches": {
-        "linux_async_compute": true,
-        "linux_async_reprojection": true
+        "linux_async_compute": false,
+        "linux_async_reprojection": false
       },
       "velocities_multiplier": 1.0,
-      "open_setup_wizard": false,
+      "open_setup_wizard": true,
       "new_version_popup": {
         "enabled": false,
         "content": {

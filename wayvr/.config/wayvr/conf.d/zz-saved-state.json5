@@ -3,6 +3,17 @@
     {
       "name": "",
       "overlays": {
+        "Signal": {
+          "alpha": 1.0,
+          "grabbable": true,
+          "interactable": true,
+          "positioning": "Anchored",
+          "curvature": 0.14999999,
+          "additive": false,
+          "saved_transform": null,
+          "block_input": true,
+          "angle_fade": false
+        },
         "DP-3": {
           "alpha": 1.0,
           "grabbable": true,
@@ -13,37 +24,50 @@
           "saved_transform": null,
           "block_input": true,
           "angle_fade": false
+        },
+        "New tab - Brave": {
+          "alpha": 1.0,
+          "grabbable": true,
+          "interactable": true,
+          "positioning": "Anchored",
+          "curvature": 0.14,
+          "additive": false,
+          "saved_transform": [
+            1.041609,
+            -0.019360771,
+            -0.17655158,
+            -0.008165816,
+            1.0440156,
+            -0.16266373,
+            0.17742217,
+            0.16171372,
+            1.0290115,
+            -0.16574624,
+            -0.14251965,
+            0.08673686
+          ],
+          "block_input": true,
+          "angle_fade": false
         }
       },
       "hidden_overlays": {
-        "kbd": {
-          "alpha": 1.0,
-          "grabbable": true,
-          "interactable": true,
-          "positioning": "Anchored",
-          "curvature": 0.15,
-          "additive": false,
-          "saved_transform": null,
-          "block_input": true,
-          "angle_fade": false
-        },
-        "DP-2": {
-          "alpha": 1.0,
-          "grabbable": true,
-          "interactable": true,
-          "positioning": "Anchored",
-          "curvature": 0.15,
-          "additive": false,
-          "saved_transform": null,
-          "block_input": true,
-          "angle_fade": false
-        },
         "whisper": {
           "alpha": 1.0,
           "grabbable": true,
           "interactable": true,
           "positioning": "Anchored",
           "curvature": null,
+          "additive": false,
+          "saved_transform": null,
+          "block_input": true,
+          "angle_fade": false
+        },
+        "kbd": {
+          "alpha": 1.0,
+          "grabbable": true,
+          "interactable": true,
+          "positioning": "Anchored",
+          "curvature": 0.15,
           "additive": false,
           "saved_transform": null,
           "block_input": true,
@@ -77,6 +101,23 @@
       "block_input": true,
       "angle_fade": false
     },
+    "grab-help": {
+      "alpha": 1.0,
+      "grabbable": false,
+      "interactable": false,
+      "positioning": {
+        "FollowHand": {
+          "hand": "Right",
+          "lerp": 0.1,
+          "align_to_hmd": true
+        }
+      },
+      "curvature": null,
+      "additive": false,
+      "saved_transform": null,
+      "block_input": true,
+      "angle_fade": false
+    },
     "toast": {
       "alpha": 1.0,
       "grabbable": false,
@@ -93,7 +134,7 @@
       "angle_fade": false
     },
     "watch": {
-      "alpha": 1.0,
+      "alpha": 0.02,
       "grabbable": false,
       "interactable": true,
       "positioning": {
@@ -105,15 +146,51 @@
       },
       "curvature": null,
       "additive": false,
-      "saved_transform": null,
+      "saved_transform": [
+        0.03542742,
+        0.045672014,
+        -0.09941825,
+        -0.07681387,
+        -0.06403005,
+        -0.05678736,
+        -0.0779073,
+        0.08390018,
+        0.010781091,
+        -0.07437706,
+        -0.0049628615,
+        0.14490561
+      ],
       "block_input": true,
       "angle_fade": true
+    },
+    "anchor": {
+      "alpha": 1.0,
+      "grabbable": false,
+      "interactable": false,
+      "positioning": "Anchored",
+      "curvature": null,
+      "additive": false,
+      "saved_transform": null,
+      "block_input": true,
+      "angle_fade": false
     }
   },
   "last_set": 0,
   "attribs": [
     [
       "DP-3",
+      []
+    ],
+    [
+      "toast",
+      []
+    ],
+    [
+      "Signal",
+      []
+    ],
+    [
+      "New tab - Brave",
       []
     ],
     [
@@ -142,10 +219,6 @@
     ],
     [
       "whisper",
-      []
-    ],
-    [
-      "toast",
       []
     ]
   ]

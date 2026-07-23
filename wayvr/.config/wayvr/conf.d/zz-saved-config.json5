@@ -43,10 +43,10 @@
   "opaque_background": false,
   "xwayland_by_default": false,
   "context_menu_hold_and_release": false,
-  "capture_method": "auto",
+  "capture_method": "Auto",
   "keyboard_middle_click_mode": "None",
   "autostart_apps": [],
-  "handsfree_pointer": "Hmd",
+  "handsfree_pointer": "None",
   "language": null,
   "chroma_key_params": {
     "hsv_min": [
