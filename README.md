@@ -14,6 +14,19 @@
 - **SteamVR must be on "previous" branch** (2.16+ causes desync: [ALVR #3297](https://github.com/alvr-org/ALVR/issues/3297), [#3326](https://github.com/alvr-org/ALVR/issues/3326))
 - UFW firewall script exit code 2 is false positive (rules already exist)
 
+### SteamVR Linux async compute + setcap (IMPORTANT)
+- Error **307 "a key component of SteamVR isn't working"** on AMD/Linux: enabling async reprojection requires creating a high-priority Vulkan queue, which needs the `CAP_SYS_NICE` capability. Without it SteamVR's compositor crash-loops → error 307.
+- The async-compute fix for Linux/AMD microstutter/ghosting ([ALVR #2537](https://github.com/alvr-org/ALVR/issues/2537)) needs BOTH:
+    - `steamvr.vrsettings`: `"disableAsync": false`, `"enableLinuxVulkanAsync": true`, `"motionSmoothing": false` (SteamVR may rewrite `disableAsync` back to `true` on its own — re-check if async stops working)
+    - ALVR `session.json`: `linux_async_compute: true` in both `openvr_config` and `extra.patches`
+- Then grant the capability (otherwise SteamVR 307s on next start):
+    ```
+    sudo setcap cap_sys_nice=eip ~/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrcompositor-launcher
+    ```
+- setcap is a **one-time filesystem capability** (persists across reboots) BUT **SteamVR self-updates overwrite `vrcompositor-launcher` and wipe the cap** — **re-run the command after every SteamVR update**.
+- Verify current cap: `getcap .../bin/linux64/vrcompositor-launcher` (expect `cap_sys_nice=eip`).
+- Status 2026-08-05: async enabled + setcap in place on SteamVR March release; still investigating controller/translation "staircase" stutter.
+
 ## WiVRn
 - v26.6.2 (AUR: wivrn-server, wivrn-dashboard)
 - xrizer-git for OpenVR→OpenXR translation
@@ -38,6 +51,16 @@ Add to each VR game in Steam → Properties → Launch Options.
 - Fallout 4 VR: needs OpenComposite for controller fix, WiVRn 26.6 has ReShade crash ([#977](https://github.com/WiVRn/WiVRn/issues/977))
 - 32-bit games (HL2VR): need 32-bit xrizer (not in Flatpak)
 - Some games have input mapping quirks via xrizer (Blade & Sorcery)
+
+## GameMode
+- CPU governor switching for VR games (WiVRn + ALVR). Config: `gamemode/gamemode.ini` → `~/.config/gamemode.ini`
+- Sets `desiredgov=performance` while a game runs, restores the previous governor on exit. LACTd handles GPU settings.
+- Install: `sudo pacman -S gamemode lib32-gamemode`, then `sudo usermod -aG gamemode $(whoami)` + **re-login** (group must be present in the session for the polkit rule to allow governor changes).
+- Add `gamemoderun` to each VR game's Steam Launch Options:
+  ```
+  gamemoderun PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 %command%
+  ```
+- Verify: `systemctl --user restart gamemoded && gamemoded -t`, then `gamemoded -s` while a game runs (expect `active`). Governor during play: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor` → `performance`.
 
 ### Useful Links
 - [WiVRn GitHub](https://github.com/WiVRn/WiVRn)
