@@ -53,14 +53,33 @@ Add to each VR game in Steam → Properties → Launch Options.
 - Some games have input mapping quirks via xrizer (Blade & Sorcery)
 
 ## GameMode
-- CPU governor switching for VR games (WiVRn + ALVR). Config: `gamemode/gamemode.ini` → `~/.config/gamemode.ini`
-- Sets `desiredgov=performance` while a game runs, restores the previous governor on exit. LACTd handles GPU settings.
-- Install: `sudo pacman -S gamemode lib32-gamemode`, then `sudo usermod -aG gamemode $(whoami)` + **re-login** (group must be present in the session for the polkit rule to allow governor changes).
-- Add `gamemoderun` to each VR game's Steam Launch Options:
-  ```
-  gamemoderun PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 %command%
-  ```
-- Verify: `systemctl --user restart gamemoded && gamemoded -t`, then `gamemoded -s` while a game runs (expect `active`). Governor during play: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor` → `performance`.
+CPU governor switching for VR games (WiVRn + ALVR). Sets `desiredgov=performance` while a game runs, restores the previous governor on exit. LACTd handles GPU settings.
+
+### Install
+```
+sudo pacman -S gamemode lib32-gamemode
+sudo usermod -aG gamemode $(whoami)
+```
+**Re-login** — the gamemode group must be present in the session for the polkit rule to allow governor changes.
+
+### Config
+Repo file: `gamemode/gamemode.ini` (edit here), symlinked into the live config:
+```
+ln -snf ../projects/vr-setup/gamemode/gamemode.ini ~/.config/gamemode.ini
+```
+
+### Usage
+Add `gamemoderun` to each VR game's Steam Launch Options:
+```
+gamemoderun PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1 %command%
+```
+Non-Steam launchers (e.g. BSManager): see `games/beat-saber.md`.
+
+### Verify
+```
+systemctl --user restart gamemoded && gamemoded -t
+```
+Then `gamemoded -s` while a game runs (expect `active`). Governor during play: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor` → `performance`.
 
 ### Useful Links
 - [WiVRn GitHub](https://github.com/WiVRn/WiVRn)
