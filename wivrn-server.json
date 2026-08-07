@@ -3,7 +3,7 @@
     "encoder": "vaapi",
     "codec": "h264",
     "bit-depth": 8,
-    "bitrate": 300000000,
+    "bitrate": 200000000,
     "foveated-encoding": true,
     "scale": 1.0,
     "hand-tracking": true,

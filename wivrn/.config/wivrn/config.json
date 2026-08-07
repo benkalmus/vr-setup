@@ -1,15 +1,16 @@
 {
-    "file_format_version": "1.0.0",
-    "encoder": "vaapi",
-    "codec": "h264",
-    "bit-depth": 8,
-    "bitrate": 300000000,
-    "foveated-encoding": true,
-    "scale": 1.0,
-    "hand-tracking": true,
-    "hid-forwarding": false,
-    "openvr-compat-path": "/opt/xrizer",
-    "use-steamvr-lh": false,
-    "application": ["wayvr"],
-    "debug-gui": false
+  "application": [
+    "wayvr"
+  ],
+  "bitrate": 300000000,
+  "codec": "h264",
+  "debug-gui": false,
+  "encoder": "vaapi",
+  "file_format_version": "1.0.0",
+  "foveated-encoding": true,
+  "hand-tracking": true,
+  "hid-forwarding": false,
+  "openvr-compat-path": "/opt/xrizer",
+  "scale": 1.0,
+  "use-steamvr-lh": false
 }
